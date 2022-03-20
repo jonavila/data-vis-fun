@@ -40,7 +40,7 @@ export function Header({ links }: HeaderProps) {
   ));
 
   return (
-    <MantineHeader height={HEADER_HEIGHT} mb={120} className={classes.root}>
+    <MantineHeader height={HEADER_HEIGHT} className={classes.root}>
       <Container className={classes.header}>
         <NavLink to="/">
           <Image src={AppLogo} width={30} height={30} />

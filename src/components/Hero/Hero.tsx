@@ -1,9 +1,20 @@
-import { Anchor, Button, Container, Group, Image, List, Text, Title } from '@mantine/core';
+import { Anchor, Button, Container, Group, Image, List, Text, ThemeIcon, Title } from '@mantine/core';
 import { NavLink } from 'react-router-dom';
+import type { Icon } from 'tabler-icons-react';
 import image from '../../assets/heroImage.svg';
 import { useStyles } from './Hero.styles';
 
-export function Hero() {
+export interface DetailItem {
+  icon: Icon;
+  label: string;
+  description: string;
+}
+
+export interface HeroProps {
+  detailItems?: DetailItem[];
+}
+
+export function Hero({ detailItems = [] }: HeroProps) {
   const { classes } = useStyles();
 
   return (
@@ -25,15 +36,18 @@ export function Hero() {
             </Text>
 
             <List mt={30} spacing="sm" size="sm">
-              <List.Item>
-                <b>TypeScript based</b> – build type safe applications, all components and hooks export types
-              </List.Item>
-              <List.Item>
-                <b>Free and open source</b> – all packages have MIT license, you can use Mantine in any project
-              </List.Item>
-              <List.Item>
-                <b>No annoying focus ring</b> – focus ring will appear only when user navigates with keyboard
-              </List.Item>
+              {detailItems.map((item) => (
+                <List.Item
+                  key={item.label}
+                  icon={
+                    <ThemeIcon size={20} radius="xl">
+                      {<item.icon size={12} />}
+                    </ThemeIcon>
+                  }
+                >
+                  <b>{item.label}</b> - {item.description}
+                </List.Item>
+              ))}
             </List>
 
             <Group mt={30}>

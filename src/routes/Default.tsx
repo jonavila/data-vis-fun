@@ -1,6 +1,7 @@
 import { AppShell } from '@mantine/core';
 import { Outlet } from 'react-router-dom';
 import { Header, HeaderLink } from '../components/Header';
+import { HEADER_HEIGHT } from '../constants';
 
 export function Default() {
   const headerLinks: HeaderLink[] = [
@@ -15,7 +16,12 @@ export function Default() {
   ];
 
   return (
-    <AppShell padding="md" navbarOffsetBreakpoint="sm" fixed header={<Header links={headerLinks} />}>
+    <AppShell
+      padding={0}
+      navbarOffsetBreakpoint="sm"
+      header={<Header links={headerLinks} />}
+      styles={{ body: { height: `calc(100vh - ${HEADER_HEIGHT}px)` } }}
+    >
       <Outlet />
     </AppShell>
   );
