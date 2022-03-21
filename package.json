@@ -10,6 +10,9 @@
     "test": "vitest",
     "prepare": "husky install"
   },
+  "engines": {
+    "node": ">=16"
+  },
   "dependencies": {
     "@mantine/core": "4.0.6",
     "@mantine/hooks": "4.0.6",
