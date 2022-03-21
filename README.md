@@ -143,3 +143,5 @@ Given the time constraints, some areas of the app require additional attention t
 - [ ] Decrease bundle size. Some time should be spent optimize the build output.
 - [ ] Don't store the entire JSON data on the client-side. 
 Store the data on a server and create the appropriate query APIs to consume data.
+- [ ] Profile the app with React Dev Tools to find components that may benefit from memoization.
+- [ ] Add additional state management to the app. Would facilitate `undo` scenarios for queries.
