@@ -11,7 +11,7 @@
     "prepare": "husky install"
   },
   "engines": {
-    "node": ">=16"
+    "node": "14.19.1"
   },
   "dependencies": {
     "@mantine/core": "4.0.6",
