@@ -68,6 +68,7 @@ export const groupByColumns: GroupByColumn[] = [
   'Genre',
   'Platform',
   'Publisher',
+  'Rating',
   'Year of Release',
 ];
 
