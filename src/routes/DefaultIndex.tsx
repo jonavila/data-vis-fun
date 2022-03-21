@@ -11,7 +11,7 @@ export function DefaultIndex() {
     },
     {
       label: 'Scores',
-      description: `critic and users scores from Metacritic's website`,
+      description: `critic and user scores from Metacritic's website`,
       icon: Gauge,
     },
   ];

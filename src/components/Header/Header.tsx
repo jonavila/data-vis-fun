@@ -1,7 +1,18 @@
-import { Burger, Container, Group, Header as MantineHeader, Image, Paper, Transition } from '@mantine/core';
+import {
+  ActionIcon,
+  Burger,
+  Container,
+  Group,
+  Header as MantineHeader,
+  Image,
+  Paper,
+  Transition,
+  useMantineColorScheme,
+} from '@mantine/core';
 import { useBooleanToggle } from '@mantine/hooks';
 import type { MouseEventHandler } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import { MoonStars, Sun } from 'tabler-icons-react';
 import AppLogo from '../../assets/appLogo.svg';
 import { HEADER_HEIGHT } from '../../constants';
 import { useStyles } from './Header.styles';
@@ -19,6 +30,8 @@ export function Header({ links }: HeaderProps) {
   const [opened, toggleOpened] = useBooleanToggle(false);
   const { pathname } = useLocation();
   const { classes, cx } = useStyles();
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const dark = colorScheme === 'dark';
 
   const onLinkClick: MouseEventHandler<HTMLAnchorElement> = () => {
     toggleOpened(false);
@@ -27,6 +40,8 @@ export function Header({ links }: HeaderProps) {
   const onBurgerClick: MouseEventHandler<HTMLButtonElement> = () => {
     toggleOpened();
   };
+
+  const onToggleColorScheme = () => toggleColorScheme();
 
   const items = links.map((link) => (
     <NavLink
@@ -47,6 +62,14 @@ export function Header({ links }: HeaderProps) {
         </NavLink>
         <Group spacing={5} className={classes.links}>
           {items}
+          <ActionIcon
+            variant="outline"
+            color={dark ? 'yellow' : 'blue'}
+            onClick={onToggleColorScheme}
+            title="Toggle color scheme"
+          >
+            {dark ? <Sun size={18} /> : <MoonStars size={18} />}
+          </ActionIcon>
         </Group>
         <Burger opened={opened} onClick={onBurgerClick} className={classes.burger} size="sm" />
         <Transition transition="pop" duration={200} mounted={opened}>
