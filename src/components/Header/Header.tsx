@@ -71,7 +71,18 @@ export function Header({ links }: HeaderProps) {
             {dark ? <Sun size={18} /> : <MoonStars size={18} />}
           </ActionIcon>
         </Group>
-        <Burger opened={opened} onClick={onBurgerClick} className={classes.burger} size="sm" />
+        <Group>
+          <Burger opened={opened} onClick={onBurgerClick} className={classes.burger} size="sm" />
+          <ActionIcon
+            className={classes.burger}
+            variant="outline"
+            color={dark ? 'yellow' : 'blue'}
+            onClick={onToggleColorScheme}
+            title="Toggle color scheme"
+          >
+            {dark ? <Sun size={18} /> : <MoonStars size={18} />}
+          </ActionIcon>
+        </Group>
         <Transition transition="pop" duration={200} mounted={opened}>
           {(styles) => (
             <Paper className={classes.dropdown} withBorder style={styles}>
